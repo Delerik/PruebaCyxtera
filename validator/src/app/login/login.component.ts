@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { finalize } from 'rxjs/operators';
-
+import { finalize, flatMap } from 'rxjs/operators';
+import { of}  from 'rxjs';
 import { environment } from '@env/environment';
 import { Logger, I18nService, AuthenticationService, untilDestroyed } from '@app/core';
 
@@ -35,13 +35,18 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login() {
     this.isLoading = true;
-    const login$ = this.authenticationService.login(this.loginForm.value);
-    login$
-      .pipe(
+    ///const login$ = this.authenticationService.login(this.loginForm.value);
+    //login$
+      of(true).pipe(
+        flatMap(()=>  this.authenticationService.login(this.loginForm.value)  ),
+
+
+
         finalize(() => {
           this.loginForm.markAsPristine();
           this.isLoading = false;
         }),
+
         untilDestroyed(this)
       )
       .subscribe(
