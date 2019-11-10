@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, observable } from 'rxjs';
 
 import { Credentials, CredentialsService } from './credentials.service';
 
@@ -26,12 +26,15 @@ export class AuthenticationService {
    */
   login(context: LoginContext): Observable<Credentials> {
     // Replace by proper authentication call
+    if(context.username=='admin'||context.username=='user'){
     const data = {
       username: context.username,
       token: '123456'
     };
     this.credentialsService.setCredentials(data, context.remember);
-    return of(data);
+    return of(data);}else{
+      Observable.throw("no");
+    }
   }
 
   /**
