@@ -1,6 +1,9 @@
 import { Router } from 'express'
+import urlvalidator from './urlvalidator'
 
 const router = new Router()
+
+router.use('/urlvalidator', urlvalidator)
 
 /**
  * @apiDefine master Master access only
