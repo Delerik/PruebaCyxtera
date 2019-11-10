@@ -1,5 +1,5 @@
 {
-  "APP_NAME": "validator",
+  "APP_NAME": "URL VALIDATOR",
   "About": "A propos",
   "Hello world !": "Bonjour le monde !",
   "Home": "Accueil",
@@ -12,5 +12,6 @@
   "Username is required": "Identifiant requis",
   "Username or password incorrect.": "Identifiant ou mot de passe incorrect.",
   "Remember me": "Rester connecté",
-  "Version": "Version"
+  "Version": "Version",
+  "home.validate.header":"Validez ici votre URL"
 }
