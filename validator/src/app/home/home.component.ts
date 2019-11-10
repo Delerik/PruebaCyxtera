@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
-
-import { QuoteService } from './quote.service';
+import { Component, OnInit,EventEmitter } from '@angular/core';
+import { requestUrlService} from './requesturl.service';
+import {responseStruct} from './home.responseStruct';
 
 @Component({
   selector: 'app-home',
@@ -11,20 +10,26 @@ import { QuoteService } from './quote.service';
 export class HomeComponent implements OnInit {
   quote: string | undefined;
   isLoading = false;
+  score = 0.7;
+  url : string;
+  user: string;
+  validate: EventEmitter<any> = new EventEmitter();
 
-  constructor(private quoteService: QuoteService) {}
-
+  constructor(private requesturl: requestUrlService) {
+    this.user = JSON.parse(localStorage.getItem("credentials")).username;
+    }
+    
   ngOnInit() {
-    this.isLoading = true;
-    this.quoteService
-      .getRandomQuote({ category: 'dev' })
-      .pipe(
-        finalize(() => {
-          this.isLoading = false;
-        })
-      )
-      .subscribe((quote: string) => {
-        this.quote = quote;
-      });
+   
+  
   }
+  getUrlScore(){
+
+    this.requesturl.getScore(this.url).subscribe((response:responseStruct) =>{
+      this.score=response.calificacion; }    
+    )
+
+  }
+
+
 }
