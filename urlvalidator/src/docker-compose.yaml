@@ -1,0 +1,21 @@
+version: '3.5'
+services:
+  response:
+    depends_on: 
+    - mongo
+    build:
+      context: .
+      dockerfile: Dockerfile
+      network: host 
+    environment:
+    - MONGODB_URI=mongodb://mongodb:27017/response
+    ports: 
+    - 9000:9000/tcp
+  mongo:
+    image: 'mongo:3.4.1'
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo:/data/db'
+volumes:
+  mongo:
