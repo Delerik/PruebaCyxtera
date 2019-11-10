@@ -3,5 +3,33 @@
     "srcDir": "src",
     "apiDir": "api",
     "authMethods": []
+  },
+  "generator-ngx-rocket": {
+    "version": "7.1.0",
+    "props": {
+      "location": "path",
+      "strict": false,
+      "skipInstall": false,
+      "skipQuickstart": false,
+      "initGit": true,
+      "appName": "urlvalidator",
+      "target": [
+        "web"
+      ],
+      "pwa": false,
+      "ui": "bootstrap",
+      "auth": true,
+      "lazy": true,
+      "angulartics": false,
+      "tools": [
+        "prettier",
+        "hads"
+      ],
+      "utility": [],
+      "projectName": "urlvalidator",
+      "packageManager": "npm",
+      "mobile": [],
+      "desktop": []
+    }
   }
 }
