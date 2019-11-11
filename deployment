@@ -1,0 +1,14 @@
+Para Despliegue con docker compose
+
+ubicarse en proyecto urlvalidator 
+ y usar las siguientes lineas
+docker-compose up -d mongo  		-- levantar mongo
+docker-compose up -d response   	-- levantar apirest 
+
+
+ubicarse en proyecto angular (validator)
+
+docker-compose up -d frontend		--levantar front end
+
+_______________________________________________
+
